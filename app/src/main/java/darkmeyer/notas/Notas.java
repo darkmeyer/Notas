@@ -36,7 +36,14 @@ public class Notas extends AppCompatActivity {
             public void onClick(View view) {
                 float n1, n2, n3, n4;
                 int p1, p2, p3, p4;
-
+                n1 = Float.parseFloat(txtNota1.getText().toString());
+                n2 = Float.parseFloat(txtNota2.getText().toString());
+                n3 = Float.parseFloat(txtNota3.getText().toString());
+                n4 = Float.parseFloat(txtNota4.getText().toString());
+                p1 = Integer.parseInt(txtPorc1.getText().toString());
+                p2 = Integer.parseInt(txtPorc2.getText().toString());
+                p3 = Integer.parseInt(txtPorc3.getText().toString());
+                p4 = Integer.parseInt(txtPorc4.getText().toString());
 
                 boolean salida = true;
                 if (TextUtils.isEmpty(txtNota1.getText().toString()))
@@ -61,35 +68,18 @@ public class Notas extends AppCompatActivity {
                     myAlert.setMessage("Se Deben llenar todos los campos");
                     myAlert.show();
                 } else {
-                    n1 = Float.parseFloat(txtNota1.getText().toString());
-                    n2 = Float.parseFloat(txtNota2.getText().toString());
-                    n3 = Float.parseFloat(txtNota3.getText().toString());
-                    n4 = Float.parseFloat(txtNota4.getText().toString());
                     if ((n1 < 1 || n1 > 7) || (n2 < 1 || n2 > 7) || (n3 < 1 || n3 > 7) || (n4 < 1 || n4 > 7)) {
                         final AlertDialog.Builder myAlert = new AlertDialog.Builder(Notas.this);
                         myAlert.setTitle("Error");
                         myAlert.setMessage("Las notas Deben ser entre 1 y 7.");
                         myAlert.show();
                     } else {
-                        p1 = Integer.parseInt(txtPorc1.getText().toString());
-                        p2 = Integer.parseInt(txtPorc2.getText().toString());
-                        p3 = Integer.parseInt(txtPorc3.getText().toString());
-                        p4 = Integer.parseInt(txtPorc4.getText().toString());
-
                         if ((p1 + p2 + p3 != 100) || (p4 < 1 || p4 > 100)) {
                             final AlertDialog.Builder myAlert = new AlertDialog.Builder(Notas.this);
                             myAlert.setTitle("Error");
                             myAlert.setMessage("Los porcentajes de notas deben sumar 100 y el procentaje examen debe estar entre el rango 1 y 100.");
                             myAlert.show();
                         } else {
-                            n1 = Float.parseFloat(txtNota1.getText().toString());
-                            n2 = Float.parseFloat(txtNota2.getText().toString());
-                            n3 = Float.parseFloat(txtNota3.getText().toString());
-                            n4 = Float.parseFloat(txtNota4.getText().toString());
-                            p1 = Integer.parseInt(txtPorc1.getText().toString());
-                            p2 = Integer.parseInt(txtPorc2.getText().toString());
-                            p3 = Integer.parseInt(txtPorc3.getText().toString());
-                            p4 = Integer.parseInt(txtPorc4.getText().toString());
                             float prom = ((((n1 * p1 / 100) + (n2 * p2 / 100) + (n3 * p3 / 100)) * (100 - p4)) / 100) + (n4 * p4 / 100);
                             if (prom > 4)
                                 txvResultado.setTextColor(0xFF0037FF);
