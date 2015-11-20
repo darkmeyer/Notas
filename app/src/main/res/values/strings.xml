@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Notas</string>
+    <string name="title_activity_creditos">Creditos</string>
+    <string name="title_activity_credito">Credito</string>
+</resources>
